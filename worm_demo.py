@@ -70,7 +70,7 @@ CHEEK_ALPHA   = 55      # 0–255
 
 # -- Animation -------------------------------------------------------------
 WAVE_AMP    = 0.45      # max joint angle (radians, ~26°)
-WAVE_FREQ   = 1.2       # full cycles per second
+WAVE_FREQ   = 0.2       # full cycles per second
 PHASE_STEP  = 0.75      # phase lag per joint (radians)
 
 # -- Background ------------------------------------------------------------
@@ -165,7 +165,7 @@ def worm_positions(t):
     Segment 0 is the head (forward in the +x direction when angle=0).
     The chain is centred at the origin each frame.
     """
-    x, y, ang = 0.0, 0.0, 0.0
+    x, y, ang = 0.0, 0.0, math.pi
     segs = [(x, y, ang)]
 
     for i in range(NUM_SEGMENTS - 1):
@@ -325,10 +325,6 @@ def main():
         screen.blit(bg, (0, 0))
 
         segs = worm_positions(t)
-
-        # Glow pass (back-to-front)
-        for i in range(NUM_SEGMENTS - 1, -1, -1):
-            draw_glow(screen, segs[i][0], segs[i][1], segs[i][2], SEG_COLORS[i])
 
         # Joint connectors
         for i in range(NUM_SEGMENTS - 1):
