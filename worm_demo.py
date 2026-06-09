@@ -77,8 +77,9 @@ def draw_pixel_circle(surf, cx, cy, r, col_dark, col_mid, col_light, col_hi):
 def draw_head(surf, sec, anim_t):
     cx, cy, ang = sec
     r  = SEG_R[0]
-    tx = math.cos(ang)
-    ty = math.sin(ang)
+    # Flip 180°: head faces away from the body, not into it
+    tx = -math.cos(ang)
+    ty = -math.sin(ang)
     nx = -ty
     ny =  tx
     icx, icy = int(cx), int(cy)
