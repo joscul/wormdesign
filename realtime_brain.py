@@ -534,8 +534,8 @@ def run(sim, scale, dir_name):
 
 def main():
     ap = argparse.ArgumentParser(description="Run a saved brain's directional sim in real time.")
-    ap.add_argument("genome", nargs="?", default="brains/moving_worm_brain.bin",
-                    help="path to brain genome .bin (default: brains/moving_worm_brain.bin)")
+    ap.add_argument("genome", nargs="?", default="worm_brain.model",
+                    help="path to brain genome .bin (default: worm_brain.model)")
     ap.add_argument("--dir", choices=list(DIRS), default="up", help="reward direction (default: up)")
     ap.add_argument("--seed", type=int, default=42, help="RNG seed (default: 42)")
     ap.add_argument("--scale", type=float, default=0.5, help="window scale vs 1080x1920 world")
